@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EmployeeSchedule.Data.Entities.EmployeeSummary>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="base">
+    <div class="row">
+        <div class="col-sm-6 ">
+            <input type="text" class="form-control" id="employeeSearchSummaryText" />
+        </div>
+    </div>
+     <div class="row buttons-index">
+        <div class="col-sm-3">
+            <input id="employeeSummarySearch" width="100" type="button" value="SearchSummary" class="btn btn-outline-info" />
+        </div>
+        <div class="col-sm-3">
+            @*<input width="100" type="button" value="Reset" class="btn btn-outline-info" />*@
+            <a class="btn btn-outline-info" asp-action="EmployeeSummary">Reset</a>
+            @*        <a asp-controller="Employee" asp-action="Index" width="100" value="Reset" class="btn btn-outline-primary" />*@
+        </div>
+    </div>
+<div class="table-responsive table-base">
+
+    <table class="table">
+        <thead class="table-head">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfSchedules)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OnTimeCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LateCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FreeDaysCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoStatisticsCount)
+                </th>
+            </tr>
+        </thead>
+        <tbody id="employeeSummaryResultInsert" class="table-body">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfSchedules)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OnTimeCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LateCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FreeDaysCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoStatisticsCount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    </div>
+    @section Styles {
+        <link rel="stylesheet" href="~/css/index.css" />
+    }
